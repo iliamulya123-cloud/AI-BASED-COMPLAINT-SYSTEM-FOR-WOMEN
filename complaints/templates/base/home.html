@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-6">AI Based Smart Complaint System for Women</h1>
+    <p class="lead">File secure complaints with text or voice, upload evidence, and track status in real time.</p>
+    {% if user.is_authenticated %}
+      <a href="{% url 'submit_complaint' %}" class="btn btn-primary btn-lg">File Complaint</a>
+    {% else %}
+      <a href="{% url 'register' %}" class="btn btn-primary btn-lg">Create Account</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

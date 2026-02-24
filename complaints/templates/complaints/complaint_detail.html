@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h3>Complaint #{{ complaint.id }}</h3>
+<ul class="list-group mb-3">
+  <li class="list-group-item"><strong>Type:</strong> {{ complaint.get_incident_type_display }}</li>
+  <li class="list-group-item"><strong>Location:</strong> {{ complaint.location }}</li>
+  <li class="list-group-item"><strong>Time:</strong> {{ complaint.incident_time }}</li>
+  <li class="list-group-item"><strong>Status:</strong> {{ complaint.get_status_display }}</li>
+  <li class="list-group-item"><strong>Description:</strong> {{ complaint.description }}</li>
+  <li class="list-group-item"><strong>Evidence Notes:</strong> {{ complaint.evidence_notes }}</li>
+</ul>
+<h5>Attachments</h5>
+<ul>
+  {% for attachment in complaint.attachments.all %}
+  <li><a href="{{ attachment.file.url }}">{{ attachment.file.name }}</a></li>
+  {% empty %}
+  <li>No attachments</li>
+  {% endfor %}
+</ul>
+{% endblock %}

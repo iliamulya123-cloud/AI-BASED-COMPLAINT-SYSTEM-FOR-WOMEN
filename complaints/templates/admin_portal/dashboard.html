@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h3>Admin Complaint Management</h3>
+<table class="table table-striped">
+  <thead><tr><th>ID</th><th>User</th><th>Type</th><th>Status</th><th></th></tr></thead>
+  <tbody>
+  {% for complaint in complaints %}
+    <tr>
+      <td>#{{ complaint.id }}</td>
+      <td>{{ complaint.user.username }}</td>
+      <td>{{ complaint.get_incident_type_display }}</td>
+      <td>{{ complaint.get_status_display }}</td>
+      <td><a class="btn btn-sm btn-warning" href="{% url 'update_complaint_status' complaint.id %}">Update</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
