@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h3>File a Complaint</h3>
+<div class="row">
+  <div class="col-lg-7">
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+      {{ form.as_p }}
+      <button type="button" class="btn btn-outline-secondary mb-3" id="startVoice">🎤 Voice to Text</button>
+      <button class="btn btn-primary">Submit Complaint</button>
+    </form>
+  </div>
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header">AI Assistant</div>
+      <div class="card-body">
+        <div id="chatWindow" class="chat-window mb-2"></div>
+        <textarea id="chatInput" class="form-control" rows="2" placeholder="Ask for guidance..."></textarea>
+        <button id="askAI" class="btn btn-sm btn-dark mt-2">Ask AI</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+window.csrfToken = '{{ csrf_token }}';
+</script>
+{% endblock %}
